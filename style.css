@@ -1,0 +1,666 @@
+<style>
+:root{
+--bg:#050713;
+--bg2:#080B1D;
+--card:#0B1024;
+--purple:#8B2CFF;
+--purple2:#A855F7;
+--magenta:#D13CFF;
+--cyan:#00D9FF;
+--white:#F8FAFC;
+--text:#C9CCDA;
+--muted:#85899E;
+--border:rgba(139,44,255,0.35);
+}
+*{margin:0;
+padding:0;
+box-sizing:
+border-box;
+font-family:
+Arial,Helvetica,sans-serif;}
+html{scroll-behavior:smooth;}
+body{background:
+var(--bg);
+color:var(--white);
+overflow-x:hidden;}
+body::before{content:"";
+position:fixed;
+width:500px;
+height:500px;
+top:-200px;
+left:-150px;
+background:var(--purple);
+filter:blur(220px);
+opacity:0.15;z-index:-2;}
+body
+::after{content:"";
+position:fixed;
+width:500px;
+height:500px;
+right:-180px;
+bottom:-200px;
+background:var(--cyan);
+filter:blur(220px);
+opacity:0.10;z-index:-2;}
+header{position:fixed;
+top:18px;
+left:3%
+;width:94%;
+height:70px;
+padding:0 30px;
+display:flex;
+header{
+position:fixed;
+top:18px;
+left:3%;
+width:94%;
+height:70px;
+padding:0 30px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+background:rgba(5,7,19,0.82);
+border:1px solid rgba(139,44,255,0.25);
+border-radius:18px;
+backdrop-filter:blur(20px);
+z-index:1000;
+box-shadow:0 10px 40px rgba(0,0,0,0.35);
+}
+.logo{
+font-size:25px;
+font-weight:bold;
+color:var(--white);
+}
+.logo span{
+color:var(--purple);
+}
+nav{
+display:flex;
+align-items:center;
+gap:28px;
+}
+nav a{
+color:#D8DAE5;
+text-decoration:none;
+font-size:15px;
+position:relative;
+transition:0.3s;
+}
+nav a:hover{
+color:var(--cyan);
+text-shadow:0 0 12px var(--cyan);
+}
+nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-8px;
+width:0;
+height:2px;
+background:linear-gradient(90deg,var(--purple),var(--cyan));
+transition:0.3s;
+}
+nav a:hover::after{
+width:100%;
+}
+.home{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:130px 8% 70px;
+position:relative;
+overflow:hidden;
+background:radial-gradient(circle at 75% 50%,rgba(121,36,255,0.15),transparent 30%),radial-gradient(circle at 95% 50%,rgba(0,217,255,0.08),transparent 25%);
+}
+.home::before{
+content:"";
+position:absolute;
+inset:0;
+background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
+background-size:60px 60px;
+pointer-events:none;
+}
+.home-content{
+width:52%;
+position:relative;
+z-index:5;
+}
+.home-content h3{
+font-size:24px;
+color:#E6E7EF;
+margin-bottom:10px;
+font-weight:500;
+}
+.home-content h1{
+font-size:70px;
+line-height:1.05;
+margin-bottom:12px;
+letter-spacing:-2px;
+color:var(--white);
+}
+.home-content h2{
+font-size:36px;
+margin-bottom:15px;
+color:var(--white);
+}
+.typing{
+background:linear-gradient(90deg,var(--purple),var(--magenta),var(--cyan));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+.home-content p{
+margin-top:15px;
+max-width:570px;
+color:var(--text);
+font-size:17px;
+line-height:1.8;
+}
+.social-icons{
+margin-top:25px;
+display:flex;
+gap:15px;
+}
+.social-icons a{
+width:43px;
+height:43px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+border:1px solid var(--purple);
+color:var(--cyan);
+text-decoration:none;
+background:rgba(139,44,255,0.05);
+transition:0.35s;
+}
+.social-icons a:hover{
+background:linear-gradient(135deg,var(--purple),var(--cyan));
+color:var(--white);
+transform:translateY(-5px) scale(1.05);
+box-shadow:0 0 15px var(--purple);
+}
+.btn{
+display:inline-block;
+margin-top:30px;
+padding:14px 30px;
+border-radius:10px;
+background:linear-gradient(90deg,var(--purple),var(--magenta));
+color:var(--white);
+text-decoration:none;
+font-weight:bold;
+transition:0.35s;
+}
+.btn:hover{
+transform:translateY(-4px);
+box-shadow:0 0 20px var(--purple);
+}
+.home-image{
+width:43%;
+display:flex;
+justify-content:flex-end;
+align-items:center;
+position:relative;
+z-index:5;
+}
+.profile{
+width:410px;
+height:410px;
+padding:7px;
+border-radius:50%;
+background:conic-gradient(from 0deg,var(--purple),var(--magenta),var(--cyan),var(--white),var(--purple));
+box-shadow:0 0 25px var(--purple),0 0 55px rgba(209,60,255,0.55),0 0 100px rgba(0,217,255,0.25);
+animation:profileGlow 4s ease-in-out infinite alternate;
+}
+.profile img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:50%;
+border:6px solid var(--bg);
+display:block;
+}
+@keyframes profileGlow{
+from{box-shadow:0 0 25px var(--purple),0 0 50px rgba(209,60,255,0.4);}
+to{box-shadow:0 0 35px var(--cyan),0 0 65px rgba(139,44,255,0.6);}
+}
+section{
+min-height:auto;
+padding:70px 8%;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+section:nth-of-type(odd){
+background:linear-gradient(180deg,var(--bg),#070A18);
+}
+section:nth-of-type(even){
+background:linear-gradient(180deg,#070A18,var(--bg));
+}
+section h2{
+font-size:45px;
+margin-bottom:18px;
+}
+section h2::after{
+content:"";
+display:block;
+width:70px;
+height:3px;
+margin:12px auto 25px;
+background:linear-gradient(90deg,var(--purple),var(--cyan));
+box-shadow:0 0 15px var(--purple);
+}
+section p{
+max-width:700px;
+margin:auto;
+line-height:1.8;
+color:var(--text);
+font-size:17px;
+}
+.cards{
+display:flex;
+gap:25px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:30px;
+}
+.card{
+width:300px;
+padding:30px;
+background:linear-gradient(145deg,rgba(14,17,42,0.85),rgba(6,8,22,0.9));
+border-radius:18px;
+border:1px solid var(--border);
+transition:0.4s;
+text-align:left;
+}
+.card:hover{
+transform:translateY(-10px);
+border-color:var(--magenta);
+box-shadow:0 0 20px rgba(139,44,255,0.25);
+}
+.card i{
+font-size:42px;
+color:var(--cyan);
+margin-bottom:18px;
+}
+.card h3{
+margin-bottom:12px;
+}
+.card p{
+font-size:14px;
+color:var(--muted);
+}
+.education-container{
+max-width:1000px;
+margin:30px auto 0;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+.education-card{
+padding:30px;
+text-align:left;
+background:linear-gradient(145deg,rgba(14,17,42,0.85),rgba(6,8,22,0.9));
+border-radius:18px;
+border:1px solid var(--border);
+transition:0.4s;
+}
+.education-card:hover{
+transform:translateY(-8px);
+border-color:var(--cyan);
+box-shadow:0 0 20px rgba(139,44,255,0.25);
+}
+.education-card i{
+font-size:42px;
+color:var(--cyan);
+margin-bottom:18px;
+}
+.education-card h3{
+color:var(--white);
+margin-bottom:10px;
+font-size:22px;
+}
+.education-card .institution{
+color:var(--purple2);
+font-weight:bold;
+margin-bottom:8px;
+}
+.education-card .year{
+color:var(--cyan);
+font-size:14px;
+margin-bottom:12px;
+}
+.education-card p{
+color:var(--muted);
+font-size:14px;
+line-height:1.7;
+margin:0;
+}
+.skill-box{
+width:100%;
+max-width:850px;
+margin:30px auto 0;
+text-align:left;
+}
+.skill{
+margin:20px 0;
+}
+.skill-title{
+display:flex;
+justify-content:space-between;
+margin-bottom:8px;
+}
+.progress{
+width:100%;
+height:9px;
+background:#15182B;
+border-radius:20px;
+overflow:hidden;
+}
+.progress span{
+display:block;
+height:100%;
+border-radius:20px;
+background:linear-gradient(90deg,var(--purple),var(--magenta),var(--cyan));
+}
+.certification-card{
+width:300px;
+padding:30px;
+background:linear-gradient(145deg,rgba(14,17,42,0.85),rgba(6,8,22,0.9));
+border-radius:18px;
+border:1px solid var(--border);
+transition:0.4s;
+text-align:left;
+}
+.certification-card:hover{
+transform:translateY(-10px);
+border-color:var(--cyan);
+box-shadow:0 0 20px rgba(139,44,255,0.25);
+}
+.certification-card i{
+font-size:45px;
+color:var(--cyan);
+margin-bottom:18px;
+}
+.certification-card h3{
+margin-bottom:12px;
+}
+.certification-card p{
+color:var(--muted);
+font-size:14px;
+margin-bottom:18px;
+}
+.certificate-btn{
+display:inline-block;
+padding:10px 20px;
+border-radius:8px;
+background:linear-gradient(90deg,var(--purple),var(--magenta));
+color:var(--white);
+text-decoration:none;
+font-weight:bold;
+}
+#contact{
+min-height:auto;
+padding:55px 8% 60px;
+}
+.contact-container{
+width:100%;
+max-width:750px;
+margin:0 auto;
+display:flex;
+flex-direction:column;
+gap:18px;
+text-align:left;
+}
+.contact-form{
+width:100%;
+padding:26px;
+border-radius:18px;
+background:linear-gradient(145deg,rgba(15,17,43,0.9),rgba(5,7,19,0.95));
+border:1px solid rgba(139,44,255,0.35);
+box-shadow:0 0 25px rgba(139,44,255,0.08);
+}
+.contact-form h3{
+font-size:24px;
+margin-bottom:16px;
+}
+.form-group{
+margin-bottom:11px;
+}
+.form-group input,.form-group textarea{
+width:100%;
+padding:12px 14px;
+border:1px solid rgba(139,44,255,0.25);
+border-radius:9px;
+background:rgba(5,7,19,0.7);
+color:var(--white);
+font-size:14px;
+outline:none;
+transition:0.3s;
+}
+.form-group input{
+height:43px;
+}
+.form-group textarea{
+height:95px;
+resize:vertical;
+}
+.form-group input::placeholder,.form-group textarea::placeholder{
+color:#777B90;
+}
+.form-group input:focus,.form-group textarea:focus{
+border-color:var(--cyan);
+box-shadow:0 0 12px rgba(0,217,255,0.12);
+}
+.contact-submit{
+width:100%;
+padding:12px;
+border:none;
+border-radius:9px;
+background:linear-gradient(90deg,var(--purple),var(--magenta));
+color:var(--white);
+font-size:15px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+.contact-submit:hover{
+transform:translateY(-3px);
+box-shadow:0 0 20px rgba(139,44,255,0.4);
+}
+.top-btn{
+position:fixed;
+right:25px;
+bottom:25px;
+width:45px;
+height:45px;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius:12px;
+color:var(--white);
+text-decoration:none;
+background:linear-gradient(135deg,var(--purple),var(--magenta));
+box-shadow:0 0 20px rgba(139,44,255,0.5);
+z-index:900;
+}
+footer{
+padding:22px;
+text-align:center;
+color:#777B90;
+background:#03040D;
+border-top:1px solid rgba(139,44,255,0.15);
+}
+footer span{
+color:var(--magenta);
+}
+@media(max-width:1000px){
+.home{flex-direction:column;text-align:center;padding-top:140px;}
+.home-content{width:100%;}
+.home-content p{margin-left:auto;margin-right:auto;}
+.social-icons{justify-content:center;}
+.home-image{width:100%;justify-content:center;margin-top:50px;}
+.profile{width:330px;height:330px;}
+}
+@media(max-width:700px){
+header{left:2%;width:96%;padding:0 18px;}
+nav{display:none;}
+.home{padding:130px 5% 60px;}
+.home-content h1{font-size:48px;}
+.home-content h2{font-size:28px;}
+.home-content h3{font-size:21px;}
+.profile{width:280px;height:280px;}
+section{padding:55px 5%;}
+section h2{font-size:36px;}
+#contact{padding:50px 5% 55px;}
+.contact-container{gap:15px;}
+.contact-form{padding:20px;}
+.contact-form h3{font-size:21px;}
+.education-card{text-align:center;}
+}
+@media(max-width:450px){
+.home-content h1{font-size:38px;}
+.home-content h2{font-size:23px;}
+.profile{width:240px;height:240px;}
+.contact-form{padding:18px;}
+}
+style>
+</head>
+<body>
+<header>
+<div class="logo">Portfolio<span>.</span></div>
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#education">Education</a>
+<a href="#skills">Skills</a>
+<a href="#certifications">Certifications</a>
+<a href="#project">Project</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+<section class="home" id="home">
+<div class="home-content">
+<h3>Hello, It's Me</h3>
+<h1>Sivagami V</h1>
+<h2>And I'm a <span class="typing"></span></h2>
+<p>
+I’m a passionate student interested in web design and development. I create modern, responsive, and user-friendly websites using HTML, CSS, Python, PHP, and other modern technologies.
+</p>
+<div class="social-icons">
+<a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+<a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+</div>
+<a href="#about" class="btn">More About Me <i class="fas fa-arrow-right"></i></a>
+</div>
+<div class="home-image">
+<div class="profile">
+<img src="profile.img.jpeg" alt="Sivagami V Profile Photo">
+</div>
+</div>
+</section>
+<section id="about">
+<div>
+<h2>About Me</h2>
+<p>I’m Sivagami, a passionate and motivated IT enthusiast with an interest in web development, programming, and emerging technologies. I enjoy creating practical solutions, learning new tools, and improving my technical skills through hands-on projects. I’m always eager to explore new technologies and stay updated with the latest trends in the IT industry. I believe every project is an opportunity to learn, improve, and grow. I’m a quick learner, problem solver, and team player who believes in continuous learning and innovation. My goal is to build a successful career in IT, work on real-world projects, and contribute to impactful digital solutions.</p>
+</div>
+</section>
+<section id="education">
+<div>
+<h2>My Education</h2>
+<div class="education-container">
+<div class="education-card">
+<i class="fas fa-graduation-cap"></i>
+<h3>Bachelor's Degree</h3>
+<div class="institution">Nirmala College For Women / Bharathiar University</div>
+<div class="year">2024 - 2027</div>
+<p>
+Information Technology, IT department, Bharathiar University. I am interested in Information Technology and enjoy learning about computers, software, web development, and digital technologies. 
+I am continuously improving my technical skills and exploring new technologies to build useful and creative solutions.
+</p>
+</div>
+<div class="education-card">
+<i class="fas fa-school"></i>
+<h3>Higher Secondary Education</h3>
+<div class="institution">Govt Girls HR Sec School-Palacode</div>
+<div class="year">2022 - 2024</div>
+<p>
+Govt Girls higher secondary school Palacode. Participated in extracurricular activities and competitions, earning prizes. 
+These activities helped me improve my confidence, teamwork, creativity, and communication skills.
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="skills">
+<div>
+<h2>My Skills</h2>
+<div class="skill-box">
+<div class="skill"><div class="skill-title"><span>HTML</span><span>95%</span></div><div class="progress"><span style="width:95%"></span></div></div>
+<div class="skill"><div class="skill-title"><span>CSS</span><span>85%</span></div><div class="progress"><span style="width:85%"></span></div></div>
+<div class="skill"><div class="skill-title"><span>Python</span><span>80%</span></div><div class="progress"><span style="width:80%"></span></div></div>
+<div class="skill"><div class="skill-title"><span>Canva</span><span>85%</span></div><div class="progress"><span style="width:85%"></span></div></div>
+<div class="skill"><div class="skill-title"><span>JavaScript</span><span>60%</span></div><div class="progress"><span style="width:60%"></span></div></div>
+</div>
+</div>
+</section>
+<section id="certifications">
+<div>
+<h2>Certifications</h2>
+<div class="cards">
+<div class="certification-card">
+<i class="fas fa-certificate">
+</i><h3>Swayam</h3>
+<p>Successfully completed a SWAYAM online course and gained knowledge in the relevant subject through structured 
+learning and assessments.
+</p><a href="#" class="certificate-btn">View Certificate</a></div>
+<div class="certification-card">
+<i class="fas fa-code">
+</i><h3>Python Programming</h3><p>Certified in Python fundamental concepts, logical problem solving, data structures,
+ and foundational algorithms.
+</p><a href="#" class="certificate-btn">View Certificate</a></div>
+</div>
+</div>
+</section>
+<section id="project">
+<div>
+<h2>My Projects</h2>
+<div class="cards">
+<div class="card">
+<i class="fas fa-laptop-code">
+</i><h3>Portfolio Website</h3>
+<p>A simple and responsive portfolio website to showcase my skills, projects, education, and achievements. 
+Designed with a clean and user-friendly interface. 
+Technologies: HTML, CSS, JavaScript</p></div>
+<div class="card">
+<i class="fas fa-globe">
+</i><h3>Web Application</h3>
+<p>A simple and responsive web application developed with a clean and user-friendly interface. It provides basic functionality with easy navigation and works well on both desktop and mobile devices. Technologies: HTML, CSS, JavaScript</p></div>
+</div>
+</div>
+</section>
+<section id="contact">
+<div style="width:100%;">
+<h2>Contact Me</h2>
+<div class="contact-container">
+<div class="contact-form">
+<h3>Send Me a Message</h3>
+<form action="mailto:vsivagami294@gmail.com" method="post" enctype="text/plain">
+<div class="form-group">
+<input type="text" name="name" placeholder="Sivagami V" required></div>
+<div class="form-group">
+<input type="email" name="email" placeholder="vsivagami294@gmail.com" required></div>
+<div class="form-group">
+<textarea name="message" placeholder="Your Message" required></textarea></div>
+<button type="submit" class="contact-submit">Send Message <i class="fas fa-paper-plane"></i></button>
+</form>
+</div>
+</div>
+</div>
+</section>
+<a href="#home" class="top-btn" aria-label="Back to top"><i class="fas fa-arrow-up"></i></a>
+<footer>
+<p>&copy; 2026 Sivagami V. Designed with <span>&hearts;</span></p>
+</footer>
